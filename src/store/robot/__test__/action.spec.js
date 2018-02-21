@@ -1,22 +1,5 @@
-import React from 'react';
-import 'react-native';
-import {
-    robotPlace,
-    robotMove,
-    robotRight,
-    robotLeft,
-    robotReport,
-    invalidCommand
-} from '../action';
-
-import {
-    PLACE,
-    MOVE,
-    RIGHT,
-    LEFT,
-    REPORT,
-    INVALID_COMMAND
-} from '../constants';
+import { robotPlace, robotMove, robotRight, robotLeft, robotReport, invalidCommand } from '../action';
+import { PLACE, MOVE, RIGHT, LEFT, REPORT, INVALID_COMMAND } from '../constants';
 
 describe('Robot Actions', () => {
     it('robotReport should create PLACE action', () => {
