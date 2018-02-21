@@ -1,40 +1,39 @@
 import {
-    ROBOT_PLACE,
-    ROBOT_MOVE,
-    ROBOT_RIGHT,
-    ROBOT_LEFT,
-    ROBOT_REPORT,
+    PLACE,
+    MOVE,
+    RIGHT,
+    LEFT,
+    REPORT,
     INVALID_COMMAND
 } from './constants';
 
 export function robotPlace(payload) {
     return {
-        type: ROBOT_PLACE,
+        type: PLACE,
         payload
     }
 }
-
 export function robotMove(payload) {
     return {
-        type: ROBOT_MOVE,
+        type: MOVE,
         payload
     }
 }
 export function robotRight(payload) {
     return {
-        type: ROBOT_RIGHT,
+        type: RIGHT,
         payload
     }
 }
 export function robotLeft(payload) {
     return {
-        type: ROBOT_LEFT,
+        type: LEFT,
         payload
     }
 }
 export function robotReport(payload) {
     return {
-        type: ROBOT_REPORT,
+        type: REPORT,
         payload
     }
 }

@@ -19,25 +19,24 @@ class ToyRobot extends Component {
     onCommandReceive(command) {
         const {robotPlace, robotLeft, robotRight, robotMove, robotReport, invalidCommand} = this.props;
         const mapActions = {
-            ROBOT_PLACE: robotPlace,
-            ROBOT_MOVE: robotMove,
-            ROBOT_RIGHT: robotRight,
-            ROBOT_LEFT: robotLeft,
-            ROBOT_REPORT: robotReport,
+            PLACE: robotPlace,
+            MOVE: robotMove,
+            RIGHT: robotRight,
+            LEFT: robotLeft,
+            REPORT: robotReport,
         }
-        const action = mapActions[command] || invalidCommand;
-        action();
+        const roboAction = (command.includes("PLACE") && 'PLACE' || command);
+        const action = mapActions[roboAction] || invalidCommand;
+        action(command);
     }
     render() {
         const {x, y, output} = this.props;
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>Toy Robot</Text>
-                <ScrollView>
-                    <OutputComponent output={output} />
-                    <BoardComponent x={x} y={y} />
-                    <InputComponent onCommandReceive={this.onCommandReceive.bind(this)} />
-                </ScrollView>
+                <OutputComponent output={output} />
+                <BoardComponent x={x} y={y} />
+                <InputComponent onCommandReceive={this.onCommandReceive.bind(this)} />
             </View>
         );
     }
@@ -53,7 +52,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        robotPlace: () => dispatch(robotPlace()),
+        robotPlace: (payload) => dispatch(robotPlace(payload)),
         robotMove: () => dispatch(robotMove()),
         robotRight: () => dispatch(robotRight()),
         robotLeft: () => dispatch(robotLeft()),

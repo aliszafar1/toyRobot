@@ -8,7 +8,7 @@ export class BoardComponent extends Component {
             , cols = 5
             , matrix = Array.from(new Array(rows), (val, row) => {
                 const elms = Array.from(new Array(cols), (val, col) => {
-                    return <View key={col} style={[styles.col, row === y && col === x && styles.selected]} />
+                    return <View key={col} style={[styles.col, row == y && col == x && styles.selected]} />
                 });
                 return <View key={row} style={styles.row}>{elms}</View>
             }).reverse();
