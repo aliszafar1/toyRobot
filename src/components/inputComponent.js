@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { TextInput } from 'react-native';
+import { TextInput, StyleSheet } from 'react-native';
+
 export class InputComponent extends Component {
     constructor() {
         super()
@@ -11,17 +12,29 @@ export class InputComponent extends Component {
         const {command} = this.state;
         const {onCommandReceive} = this.props;
         onCommandReceive(command);
+        this.setState({ command: '' });
+        this.refs.commandInput.clear();
     }
 
     render() {
         return <TextInput
-            style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+            ref="commandInput"
+            style={styles.input}
             onChangeText={(command) => this.setState({ command })}
             onSubmitEditing={this.onSubmit.bind(this)}
             value={this.state.command}
             placeholder="Enter your command"
             autoCapitalize="characters"
             underlineColorAndroid="transparent"
+            disableFullscreenUI={true}
             />
     }
 }
+
+const styles = StyleSheet.create({
+    input: {
+        height: 40,
+        borderColor: 'gray',
+        borderWidth: 1
+    }
+})

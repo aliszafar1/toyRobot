@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-export class BoardComponent extends Component {
 
+export class BoardComponent extends Component {
     render() {
         const {x, y} = this.props;
         const rows = 5

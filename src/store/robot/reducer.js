@@ -23,14 +23,14 @@ export default function RobotReducer(state = initialState, action) {
             if (x > 4 || y > 4) {
                 return {
                 ...state,
-                    isPlaced: true,
-                    x, y, direction,
-                    output: ''
+                    output: 'Invalid Command'
                 }
             }
             return {
                 ...state,
-                output: 'Invalid Command'
+                isPlaced: true,
+                x, y, direction,
+                output: ''
             }
         case 'RIGHT': {
             if (isPlaced) {

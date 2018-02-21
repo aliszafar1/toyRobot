@@ -13,32 +13,18 @@ export function robotPlace(payload) {
         payload
     }
 }
-export function robotMove(payload) {
-    return {
-        type: MOVE,
-        payload
-    }
+export function robotMove() {
+    return { type: MOVE }
 }
-export function robotRight(payload) {
-    return {
-        type: RIGHT,
-        payload
-    }
+export function robotRight() {
+    return { type: RIGHT }
 }
-export function robotLeft(payload) {
-    return {
-        type: LEFT,
-        payload
-    }
+export function robotLeft() {
+    return { type: LEFT }
 }
-export function robotReport(payload) {
-    return {
-        type: REPORT,
-        payload
-    }
+export function robotReport() {
+    return { type: REPORT }
 }
 export function invalidCommand() {
-    return {
-        type: INVALID_COMMAND
-    }
+    return { type: INVALID_COMMAND }
 }
