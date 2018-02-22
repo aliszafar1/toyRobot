@@ -41,6 +41,58 @@ describe('Robot Reducer', () => {
                 y: 0
             })
         })
+
+        it('should move robot', () => {
+            const input = {...state, direction: 'WEST', x:2}
+            expect(RobotReducer(input, {
+            type: MOVE
+        })).toEqual({
+            isPlaced: true,
+            direction: 'WEST',
+            output: '',
+            x: 1,
+            y: 0
+            })
+        })
+
+        it('should move robot', () => {
+            const input = {...state, direction: 'NORTH'}
+            expect(RobotReducer(input, {
+                type: MOVE
+            })).toEqual({
+                isPlaced: true,
+                direction: 'NORTH',
+                output: '',
+                x: 0,
+                y: 1
+            })
+        })
+
+        it('should move robot', () => {
+            const input = {...state, direction: 'SOUTH', y:2}
+            expect(RobotReducer(input, {
+                type: MOVE
+            })).toEqual({
+                isPlaced: true,
+                direction: 'SOUTH',
+                output: '',
+                x: 0,
+                y: 1
+            })
+        })
+
+        it('should not move robot', () => {
+            const input = {...state, isPlaced: false}
+            expect(RobotReducer(input, {
+                type: MOVE
+            })).toEqual({
+                isPlaced: false,
+                direction: 'EAST',
+                output: 'Invalid Command',
+                x: 0,
+                y: 0
+            })
+        })
     })
 
     describe('ROBOT LEFT Action', () => {
@@ -55,21 +107,87 @@ describe('Robot Reducer', () => {
                 y: 0
             })
         })
-    })
 
-    describe('ROBOT RIGHT Action', () => {
-        it('should change direction of robot 90 degree right', () => {
-            expect(RobotReducer(state, {
+        it('should change direction of robot 90 degree left', () => {
+            const input = {...state, direction: 'NORTH'}
+            expect(RobotReducer(input, {
+            type: LEFT
+        })).toEqual({
+            isPlaced: true,
+            direction: 'WEST',
+            output: '',
+            x: 0,
+            y: 0
+            })
+        })
+
+        it('should not change direction of robot 90 degree left', () => {
+            const input = {...state, isPlaced: false}
+            expect(RobotReducer(input, {
+                type: LEFT
+            })).toEqual({
+                isPlaced: false,
+                direction: 'EAST',
+                output: 'Invalid Command',
+                x: 0,
+                y: 0
+                })
+            })
+        })
+
+        describe('ROBOT RIGHT Action', () => {
+            it('should change direction of robot 90 degree right', () => {
+                expect(RobotReducer(state, {
+                    type: RIGHT
+                })).toEqual({
+                    isPlaced: true,
+                    direction: 'SOUTH',
+                    output: '',
+                    x: 0,
+                    y: 0
+                })
+            })
+
+            it('should change direction of robot 90 degree right', () => {
+                const input = {...state, direction: 'NORTH'}
+                expect(RobotReducer(input, {
                 type: RIGHT
             })).toEqual({
                 isPlaced: true,
-                direction: 'SOUTH',
+                direction: 'EAST',
                 output: '',
                 x: 0,
                 y: 0
+                })
+            })
+
+        it('should not change direction of robot 90 degree right', () => {
+            const input = {...state, isPlaced: false}
+            expect(RobotReducer(input, {
+                type: RIGHT
+            })).toEqual({
+                isPlaced: false,
+                direction: 'EAST',
+                output: 'Invalid Command',
+                x: 0,
+                y: 0
+                })
             })
         })
-    })
+
+        describe('ROBOT REPORT Action', () => {
+            it('should create report', () => {
+                expect(RobotReducer(state, {
+                    type: REPORT
+                })).toEqual({
+                    isPlaced: true,
+                    direction: 'EAST',
+                    output: `x = 0 y = 0 EAST`,
+                    x: 0,
+                    y: 0
+                })
+            })
+        })
 
     describe('ROBOT INVALID Action', () => {
         it('should change direction of robot 90 degree right', () => {
